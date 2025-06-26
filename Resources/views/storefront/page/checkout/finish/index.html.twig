@@ -1,0 +1,11 @@
+{% sw_extends '@Storefront/storefront/page/checkout/finish/index.html.twig' %}
+
+
+{% block page_checkout_finish_customer_comment%}
+    {% set orderTransaction = page.order.transactions.last %}
+    
+    {% if 'novalnetpaymentapp' not in orderTransaction.paymentMethod.handlerIdentifier and 'Novalnet' in page.order.customerComment %}
+    {% else %}
+		{{ parent() }}
+    {% endif %}
+{% endblock %}
