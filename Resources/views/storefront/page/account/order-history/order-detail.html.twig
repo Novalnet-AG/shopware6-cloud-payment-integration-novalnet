@@ -1,0 +1,20 @@
+{% sw_extends '@Storefront/storefront/page/account/order-history/order-detail.html.twig' %}
+
+{% block page_account_order_customer_comment_content %}
+    {{ parent() }}
+    
+    {% set orderTransaction = order.transactions.last %}
+    {% set customFields = order.transactions.last.getCustomFields() %}
+    {% set qrCodeImage = customFields['nnQrCode'] %}
+
+    {% if 'novalnetpaymentapp' in orderTransaction.paymentMethod.handlerIdentifier and qrCodeImage is not empty %}
+        <div class="col-12 card-content mt-2">
+            <div class="qr-code-text">
+                {{ "NovalnetPaymentApp.text.epcQrCodeDesc"|trans|sw_sanitize }}
+            </div>
+            <div class="qr-code-image">
+                <img src="{{ qrCodeImage }}" alt="QR Code" title="QR Code" />
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

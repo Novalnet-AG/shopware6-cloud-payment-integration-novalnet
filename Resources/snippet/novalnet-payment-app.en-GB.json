@@ -1,0 +1,7 @@
+{
+  "NovalnetPaymentApp": {
+    "text": {
+      "epcQrCodeDesc": "Alternatively, you can use the QR code below for your convenience. Please scan it with your banking app to complete the payment."
+    }
+  }
+}
